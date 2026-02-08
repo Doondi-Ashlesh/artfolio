@@ -1,0 +1,358 @@
+/* General body layout */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', serif;
+  background-color: #f5f0e6;
+  line-height: 1.6;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url('assets/images/comic_panel_3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: -1;
+  filter: contrast(1.1) brightness(1.05);
+}
+
+/* Main Wrapper */
+.newspaper {
+  width: 100%;
+  padding: 40px 5%;
+  box-sizing: border-box;
+  background-color: rgba(26, 25, 25, 0.3);
+}
+
+/* Header Area */
+.header {
+  text-align: center;
+  border-bottom: 2px solid #111;
+  padding-bottom: 20px;
+}
+
+.logo {
+  font-size: 36px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 1px 1px #ccc;
+}
+
+.edition {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.subtext {
+  font-size: 11px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+/* Titles and Taglines */
+.main-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 80px;
+  text-align: center;
+  margin: 30px 0 10px;
+  letter-spacing: -2px;
+  color: #111;
+}
+
+.tagline {
+  background: #aa2e3f;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 40px; 
+}
+
+/* Main Image and Live Box */
+.main-image {
+  margin-top: 20px;
+  position: relative;
+}
+
+.main-image img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border: 1px solid #444;
+}
+
+.live-box {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 13px;
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  border: 2px dashed #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.live-box h3 {
+  margin: 5px 0;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.live-box p {
+  margin: 4px 0;
+}
+
+.live-box .italic {
+  font-style: italic;
+}
+
+/* Columns for Body Text */
+.text-columns {
+  column-count: 3;
+  column-gap: 30px;
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* Highlighted Headline */
+.highlight-box {
+  background: #111;
+  color: #fff;
+  padding: 12px;
+  font-size: 14px;
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* Section Divider */
+.section-divider {
+  border: none;
+  border-top: 2px dashed #666;
+  margin: 40px 0;
+}
+
+/* Comic Carousel */
+.comic-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 0;
+  position: relative;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.comic-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.comic-carousel a {
+  flex: 0 0 250px;
+  border: 2px solid #444;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transform: scale(1);
+  opacity: 0.7;
+  pointer-events: none;
+  cursor: default;
+  display: none; /* initially hidden, controlled via JS */
+}
+
+.comic-carousel a.visible {
+  display: block;
+  opacity: 0.7;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.comic-carousel a.highlight {
+  transform: scale(1.15);
+  border-color: #aa2e3f;
+  box-shadow: 0 0 15px #aa2e3faa;
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.comic-carousel a:hover:not(.highlight) {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.comic-carousel img {
+  width: 100%;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Dots Navigation */
+.carousel-dots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.carousel-dots button {
+  width: 14px;
+  height: 14px;
+  margin: 0 6px;
+  border-radius: 50%;
+  border: none;
+  background-color: #0d0d0d;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-dots button.active {
+  background-color: #aa2e3f;
+  box-shadow: 0 0 6px #aa2e3faa;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-top: 1px solid #222;
+  padding-top: 10px;
+  font-style: italic;
+}
+
+footer .social-icons {
+  margin-top: 10px;
+}
+
+footer .social-icons a {
+  color: #222;
+  margin: 0 8px;
+  font-size: 18px;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+footer .social-icons a:hover {
+  color: #a0522d; /* vintage-style color */
+}
+
+/* Responsive Tweaks */
+@media screen and (max-width: 1024px) {
+  .text-columns {
+    column-count: 2;
+  }
+  .main-title {
+    font-size: 60px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-title {
+    font-size: 42px;
+  }
+  .text-columns {
+    column-count: 1;
+  }
+  .live-box {
+    width: 150px;
+    font-size: 11px;
+  }
+  .comic-carousel {
+    width: 100%;
+    padding: 20px 10px;
+  }
+  .comic-carousel a {
+    flex: 0 0 150px;
+  }
+}
+
+/* Merch styling */
+.merch-store {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 40px auto 60px;
+  flex-wrap: wrap;
+}
+
+.merch-item {
+  background: #242323;
+  border: 2px solid #444;
+  border-radius: 8px;
+  width: 250px;
+  padding: 5px;
+  box-shadow: 0 0 10px #aa2e3f44;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.merch-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #aa2e3f99;
+}
+
+.merch-item img {
+  width: 100%;
+  height: 300px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.merch-item h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #aa2e3f;
+}
+
+.merch-item p {
+  font-size: 14px;
+  color: #686464;
+  margin-bottom: 15px;
+  min-height: 48px;
+}
+
+.btn-buy {
+  display: inline-block;
+  background-color: #191818;
+  color: #f5f0f0;
+  padding: 8px 22px;
+  border-radius: 5px;
+  font-family: 'Oswald', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-buy:hover {
+  background-color: #880025;
+}
