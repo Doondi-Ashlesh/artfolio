@@ -31,8 +31,6 @@ This specific implementation was built to represent my brother’s artistic iden
 
 ## Tech Stack
 
-*(Update this section based on your implementation)*
-
 - HTML / CSS / JavaScript  
 - Framework or library (if applicable)  
 - Hosting platform (e.g., GitHub Pages, Vercel, Netlify)
