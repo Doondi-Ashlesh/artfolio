@@ -2,11 +2,13 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Georgia', serif;
+  font-family: 'Old Standard TT', Georgia, serif;
   background-color: #f5f0e6;
   line-height: 1.6;
   position: relative;
   min-height: 100vh;
+  color: #111;
+  scroll-behavior: smooth;
 }
 
 body::before {
@@ -27,9 +29,45 @@ body::before {
 /* Main Wrapper */
 .newspaper {
   width: 100%;
-  padding: 40px 5%;
+  padding: 20px 5% 40px;
   box-sizing: border-box;
-  background-color: rgba(26, 25, 25, 0.3);
+  background-color: rgba(245, 240, 230, 0.8); /* More readable background */
+  box-shadow: 0 0 50px rgba(0,0,0,0.1);
+}
+
+/* Navigation */
+.main-nav {
+  border-bottom: 2px solid #111;
+  border-top: 2px solid #111;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  background: #f5f0e6;
+  z-index: 100;
+}
+
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  color: #111;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: #aa2e3f;
 }
 
 /* Header Area */
@@ -146,11 +184,53 @@ body::before {
 /* Section Divider */
 .section-divider {
   border: none;
-  border-top: 2px dashed #666;
-  margin: 40px 0;
+  border-top: 2px solid #111;
+  margin: 60px 0;
+  position: relative;
+}
+
+.section-divider::after {
+  content: "◈";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f5f0e6;
+  padding: 0 15px;
+  font-size: 18px;
 }
 
 /* Comic Carousel */
+.comic-carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.carousel-btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: #aa2e3f;
+  transform: scale(1.1);
+}
+
 .comic-carousel {
   display: flex;
   justify-content: center;
@@ -158,11 +238,8 @@ body::before {
   gap: 20px;
   overflow: hidden;
   max-width: 1000px;
-  margin: 0 auto;
   padding: 20px 0;
   position: relative;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
 }
 
 .comic-carousel::-webkit-scrollbar {
@@ -302,14 +379,19 @@ footer .social-icons a:hover {
 }
 
 .merch-item {
-  background: #242323;
-  border: 2px solid #444;
-  border-radius: 8px;
-  width: 250px;
-  padding: 5px;
-  box-shadow: 0 0 10px #aa2e3f44;
+  background: #fff; /* Changed from dark to light for paper aesthetic */
+  border: 1px solid #ddd;
+  border-radius: 4px; /* Slightly sharper for professional look */
+  width: 280px;
+  padding: 15px;
+  box-shadow: 5px 5px 0px #111; /* Newspaper-style shadow */
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.merch-item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px #aa2e3f;
 }
 
 .merch-item:hover {
